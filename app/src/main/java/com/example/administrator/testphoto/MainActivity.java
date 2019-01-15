@@ -125,15 +125,16 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                break;
             case CHOOSE_PHOTO:
                 if (resultCode==RESULT_OK){
                     if (Build.VERSION.SDK_INT>=19){
                         handleImageNow(data);
-//                        handleImageBefore(data);
                     }else {
                         handleImageBefore(data);
                     }
                 }
+                break;
         }
     }
 
