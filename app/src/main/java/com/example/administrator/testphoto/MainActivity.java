@@ -158,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
             imagePath=uri.getPath();
         }
         displayImage(imagePath);
+
+        //直接用图库图片封装过的Uri也可以加载图片
+//        displayImage(uri);
     }
 
     public void handleImageBefore(Intent data){
@@ -185,6 +188,17 @@ public class MainActivity extends AppCompatActivity {
             circleImageView.setImageBitmap(bitmap);
         }else {
             Log.i(TAG, "displayImage: 图片路径存在问题");
+        }
+    }
+
+    //直接用图库图片封装过的Uri也可以加载图片
+    public void displayImage(Uri galleryUri){
+        try {
+            Bitmap bitmap=BitmapFactory.decodeStream(getContentResolver().openInputStream(galleryUri));
+            imageView.setImageBitmap(bitmap);
+            circleImageView.setImageBitmap(bitmap);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
